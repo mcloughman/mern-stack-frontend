@@ -6,7 +6,7 @@ const WorkoutForm = () => {
   const [title, setTitle] = useState("");
   const [load, setLoad] = useState("");
   const [reps, setReps] = useState("");
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -19,14 +19,11 @@ const WorkoutForm = () => {
         "Content-Type": "application/json",
       },
     });
-    console.log(response);
 
     const json = await response.json();
 
     if (!response.ok) {
-      setError(json.error);
-      console.log("NO");
-      return;
+      setError(json.err);
     }
     if (response.ok) {
       setError(null);
