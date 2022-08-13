@@ -14,11 +14,15 @@ export const AuthReducer = (state, action) => {
 };
 
 export const AuthContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(authReducer, {
+  const [state, dispatch] = useReducer(AuthReducer, {
     user: null,
   });
 
   console.log("AuthContext state: ", state);
 
-  return <AuthContext.Provider>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ ...state, dispatch }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
