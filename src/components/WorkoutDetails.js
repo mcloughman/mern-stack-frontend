@@ -11,7 +11,7 @@ const WorkoutDetails = ({ workout }) => {
 
   const handleClick = async () => {
     if (!user) {
-      return;
+      cdreturn;
     }
     const response = await fetch(`/api/workouts/${workout._id}`, {
       method: "DELETE",
